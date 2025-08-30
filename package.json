@@ -5,6 +5,7 @@
   "author": "Johnny Grid <hello@vueless.com> (https://vueless.com)",
   "homepage": "https://vueless.com",
   "license": "MIT",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +24,8 @@
     "lint:ci": "eslint --no-fix --max-warnings=0"
   },
   "dependencies": {
-    "degit": "^2.8.4"
+    "degit": "^2.8.4",
+    "prompts": "^2.4.2"
   },
   "devDependencies": {
     "@release-it/bumper": "^7.0.5",
