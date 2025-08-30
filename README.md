@@ -6,7 +6,7 @@ A CLI tool for quickly scaffolding a Vue.js app with [Vueless UI](https://github
 
 
 ```bash
-npx create vueless@latest
+npm create vueless@latest
 ```
 
 ## Contributing
