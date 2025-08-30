@@ -1,6 +1,6 @@
 # Create Vueless
 
-A CLI tool for quickly scaffolding a Vue.js app with [Vueless UI](https://github.com/vuelessjs/vueless), using either JavaScript or TypeScript templates.
+A CLI tool for quickly scaffolding a Vue.js app with [Vueless UI](https://github.com/vuelessjs/vueless), using either [JavaScript](https://github.com/vuelessjs/vueless-quickstart) or [TypeScript](https://github.com/vuelessjs/vueless-quickstart-ts) templates.
 
 [Documentation](https://docs.vueless.com/installation/vue) | [UI Components](https://ui.vueless.com/) | [About Vueless UI](http://vueless.com/)
 
