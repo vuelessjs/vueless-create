@@ -1,0 +1,52 @@
+{
+  "name": "create-vueless",
+  "version": "0.0.1",
+  "description": "A tool to quickly start a Vue project with Vueless UI.",
+  "author": "Johnny Grid <hello@vueless.com> (https://vueless.com)",
+  "homepage": "https://vueless.com",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "index.js",
+  "bin": {
+    "create-vueless": "./index.js"
+  },
+  "scripts": {
+    "release:prepare": "rm -rf dist && mkdir -p dist && cp -r src/. package.json LICENSE README.md dist/",
+    "release:beta": "release-it --ci --npm.publish --preRelease=beta --increment=prerelease",
+    "release:patch": "release-it patch --ci --npm.publish --git.tag --github.release",
+    "release:minor": "release-it minor --ci --npm.publish --git.tag --github.release",
+    "release:major": "release-it major --ci --npm.publish --git.tag --github.release",
+    "lint": "eslint --no-fix src/ test/ .storybook/ .vueless/",
+    "lint:fix": "eslint --fix src/ test/ .storybook/ .vueless/",
+    "lint:ci": "eslint --no-fix --max-warnings=0"
+  },
+  "dependencies": {
+    "degit": "^2.8.4"
+  },
+  "devDependencies": {
+    "@release-it/bumper": "^7.0.5",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "eslint": "^9.34.0",
+    "globals": "^16.3.0",
+    "release-it": "^19.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuelessjs/vueless-create.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vuelessjs/vueless-create/issues"
+  },
+  "keywords": [
+    "vueless",
+    "vite",
+    "vue",
+    "vue3",
+    "template",
+    "quickstart",
+    "vue-template",
+    "vue-quickstart"
+  ]
+}
