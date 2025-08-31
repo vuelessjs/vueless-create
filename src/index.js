@@ -54,7 +54,7 @@ if (fs.existsSync(targetDir)) {
 }
 
 /* --- Clone repo from main branch --- */
-console.log(`✨ Cloning ${repos[variant]} into ${projectName}`);
+console.log(`✨ Cloning "${repos[variant]}" into "${projectName}"...`);
 const emitter = degit(`${repos[variant]}#main`, {
   cache: false,
   force: true,
@@ -67,7 +67,33 @@ await emitter.clone(targetDir);
 console.log(`📦 Installing dependencies with ${pm}...`);
 execSync(`${pm} install`, { cwd: targetDir });
 
-/* --- Init project --- */
+/* --- Initialize project --- */
+console.log("🚀 Initializing project...");
+
+// Remove vueless config files
+const vuelessConfigTs = path.join(targetDir, "vueless.config.ts");
+const vuelessConfigJs = path.join(targetDir, "vueless.config.js");
+
+if (fs.existsSync(vuelessConfigTs)) fs.unlinkSync(vuelessConfigTs);
+if (fs.existsSync(vuelessConfigJs)) fs.unlinkSync(vuelessConfigJs);
+
+// Remove package-lock.json if not using npm
+if (pm !== "npm") {
+  const packageLockPath = path.join(targetDir, "package-lock.json");
+
+  if (fs.existsSync(packageLockPath)) fs.unlinkSync(packageLockPath);
+}
+
+const initCommands = {
+  npm: "npx vueless init",
+  yarn: "yarn vueless init --yarn",
+  pnpm: "pnpm exec vueless init --pnpm",
+  bun: "bunx vueless init",
+};
+
+execSync(initCommands[pm], { cwd: targetDir });
+
+// Create .env.local
 const envTarget = path.join(targetDir, ".env.local");
 const envSource = path.join(targetDir, ".env.local.example");
 
