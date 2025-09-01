@@ -1,6 +1,6 @@
 {
   "name": "create-vueless",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool to quickly start a Vue project with Vueless UI.",
   "author": "Johnny Grid <hello@vueless.com> (https://vueless.com)",
   "homepage": "https://vueless.com",
