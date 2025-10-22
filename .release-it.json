@@ -11,6 +11,7 @@
   },
   "npm": {
     "publish": false,
+    "skipChecks": true,
     "publishPath": "./dist"
   },
   "plugins": {
