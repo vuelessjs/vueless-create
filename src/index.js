@@ -66,17 +66,24 @@ await emitter.clone(targetDir);
 /* --- Initialize project --- */
 console.log("🚀 Initializing project...");
 
-/* 1. Remove vueless config files */
+/* 1. Remove .github folder */
+const githubDir = path.join(targetDir, ".github");
+
+if (fs.existsSync(githubDir)) {
+  fs.rmSync(githubDir, { recursive: true, force: true });
+}
+
+/* 2. Remove vueless config files */
 const vuelessConfigTs = path.join(targetDir, "vueless.config.ts");
 const vuelessConfigJs = path.join(targetDir, "vueless.config.js");
 
 if (fs.existsSync(vuelessConfigTs)) fs.unlinkSync(vuelessConfigTs);
 if (fs.existsSync(vuelessConfigJs)) fs.unlinkSync(vuelessConfigJs);
 
-/* 2. Install dependencies */
+/* 3. Install dependencies */
 execSync("npm install", { cwd: targetDir });
 
-/* 3. Initialize Vueless */
+/* 4. Initialize Vueless */
 const initCommands = {
   npm: "npx vueless init",
   yarn: "npx vueless init --yarn",
@@ -86,7 +93,7 @@ const initCommands = {
 
 execSync(initCommands[pm], { cwd: targetDir });
 
-/* 4. Add the ` packageManager ` field to package.json */
+/* 5. Add the ` packageManager ` field to package.json */
 const packageJsonPath = path.join(targetDir, "package.json");
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
@@ -100,10 +107,10 @@ try {
   console.warn(`⚠️ Could not detect ${pm} version, skipping packageManager field`);
 }
 
-/* 5. Set environment variable to ensure the correct package manager is used */
+/* 6. Set environment variable to ensure the correct package manager is used */
 const env = { ...process.env, npm_config_user_agent: `${pm}` };
 
-/* 6. Remove `package-lock.json` if not using npm */
+/* 7. Remove `package-lock.json` if not using npm */
 if (pm !== "npm") {
   const packageLockPath = path.join(targetDir, "package-lock.json");
 
@@ -112,7 +119,7 @@ if (pm !== "npm") {
   }
 }
 
-/* 7. Create .env.local */
+/* 8. Create .env.local */
 const envTarget = path.join(targetDir, ".env.local");
 const envSource = path.join(targetDir, ".env.local.example");
 
