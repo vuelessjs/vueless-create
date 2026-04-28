@@ -1,6 +1,6 @@
 {
   "name": "create-vueless",
-  "version": "1.0.2",
+  "version": "1.0.3-beta.0",
   "description": "A tool to quickly start a Vue project with Vueless UI.",
   "author": "Johnny Grid <hello@vueless.com> (https://vueless.com)",
   "homepage": "https://vueless.com",
@@ -30,9 +30,9 @@
   "devDependencies": {
     "@release-it/bumper": "^7.0.5",
     "@vue/eslint-config-prettier": "^10.2.0",
-    "eslint": "^9.34.0",
-    "globals": "^16.3.0",
-    "release-it": "^19.0.4"
+    "eslint": "^10.2.1",
+    "globals": "^17.5.0",
+    "release-it": "^20.0.1"
   },
   "repository": {
     "type": "git",
